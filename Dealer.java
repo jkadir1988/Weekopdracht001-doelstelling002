@@ -29,15 +29,18 @@ public class Dealer {
 			Kaartendeck.verwijderKaart();
 			break;
 		case "p":
+			doorspelen = false;
 			System.out.println("Pas !");
-			System.out.println(Kaartendeck.totaal);
+			System.out.println("Uw totale score is: " + Kaartendeck.totaal + "\n");
 			break;
 		case "q":
 			doorspelen = false;
-			System.out.println("Ik stop !");
+			System.out.println("\nIk stop !\nWilt u verder spelen?\n");
 			break;
+		default:
+			System.out.println("Toets een geldige knop aub!");
 
 		}
 	}
-	
+
 }

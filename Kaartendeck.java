@@ -2,6 +2,7 @@ package BlackJack;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class Kaartendeck {
 	String[] typeKaart = { "S", "H", "R", "K" };
@@ -11,8 +12,10 @@ public class Kaartendeck {
 	static int beginWaarde;
 	static int getrokkenWaarde;
 	static int totaal;
+	static boolean doorspelen = true;
 
-	void hetDeck() {
+	void hetDeck() {	
+		intro();
 		for (int indexType = 0; indexType < typeKaart.length; indexType++) {
 			for (int indexRang = 0; indexRang < rangKaart.length; indexRang++) {
 				Kaart kaart = new Kaart();
@@ -44,16 +47,16 @@ public class Kaartendeck {
 		int totaleWaarde = beginWaarde + getrokkenWaarde;
 		totaal = totaleWaarde;
 		if (totaleWaarde < 21) {
-			System.out.println("Je totale score is " + totaleWaarde);
+			System.out.println("\nJe totale score is " + totaleWaarde);
 			beginWaarde = totaleWaarde;
 			deckKaarten.remove(0);
 			System.out.println();
 		} else if (totaleWaarde == 21) {
-			System.out.println("Gewonnen, Blackjack!");
+			System.out.println("\nGewonnen, Blackjack!\nWilt u nog een keer spelen?\n");
 			Dealer.doorspelen = false;
 		} else {
-			System.out.println("Je totale score is " + totaleWaarde);
-			System.out.println("Verloren!");
+			System.out.println("\nJe totale score is " + totaleWaarde);
+			System.out.println("\nVerloren!\nWilt u nog een keer spelen?\n");
 			Dealer.doorspelen = false;
 		}
 
@@ -61,6 +64,14 @@ public class Kaartendeck {
 
 	static void verwijderKaart() {
 		deckKaarten.remove(0);
+	}
+	void intro() {
+		System.out.println("Regels:\nElk kaart heeft zijn eigen waarde.\nKaarten 2 t/m 10 hebben de waarde idem de kaartnummer\nKaarten met een plaatje (Boer, Koningin, Koning) zijn tien punten waard\nAce is 11 punten waard.\n");
+		
+		System.out.println(
+				"S staat voor Schoppen\nH staat voor Harten\nR staat voor Ruiten\nK staat voor Klaver\n"
+				+ "\nSpeel zovaak je wilt tot je 21 punten in totaal hebt gehaald!\n"
+				+ "\nDit zijn de kaarten: \n");	
 	}
 
 }
